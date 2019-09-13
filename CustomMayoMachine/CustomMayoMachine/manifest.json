@@ -1,0 +1,10 @@
+﻿{
+	"Name": "Custom Mayo Machine",
+	"Author": "minervamaga",
+	"Version": "1.0.0",
+	"Description": "Adds a way to customize the mayo machine.",
+	"UniqueID": "minervamaga.CustomMayoMachine",
+	"EntryDll": "CustomMayoMachine.dll",
+	"MinimumApiVersion": "2.11.2",
+	"UpdateKeys": [ "Nexus:" ]
+}

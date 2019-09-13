@@ -1,0 +1,8 @@
+C:\Users\Courtney\source\repos\CustomMayoMachine\CustomMayoMachine\bin\x86\Debug\CustomMayoMachine.dll
+C:\Users\Courtney\source\repos\CustomMayoMachine\CustomMayoMachine\bin\x86\Debug\CustomMayoMachine.pdb
+C:\Users\Courtney\source\repos\CustomMayoMachine\CustomMayoMachine\bin\x86\Debug\0Harmony.dll
+C:\Users\Courtney\source\repos\CustomMayoMachine\CustomMayoMachine\obj\x86\Debug\CustomMayoMachine.csprojAssemblyReference.cache
+C:\Users\Courtney\source\repos\CustomMayoMachine\CustomMayoMachine\obj\x86\Debug\CustomMayoMachine.csproj.CoreCompileInputs.cache
+C:\Users\Courtney\source\repos\CustomMayoMachine\CustomMayoMachine\obj\x86\Debug\CustomMayoMachine.csproj.CopyComplete
+C:\Users\Courtney\source\repos\CustomMayoMachine\CustomMayoMachine\obj\x86\Debug\CustomMayoMachine.dll
+C:\Users\Courtney\source\repos\CustomMayoMachine\CustomMayoMachine\obj\x86\Debug\CustomMayoMachine.pdb
