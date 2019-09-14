@@ -68,6 +68,7 @@ namespace CustomMayoMachine
             if (!(dropInItem is SObject))
                 return false;
             SObject inputItem = (SObject)dropInItem;
+            SObject newHeldObject = null;
             SObject machine = __instance;
             Multiplayer mp = new Multiplayer();
             //Check the machine for held items
@@ -105,7 +106,15 @@ namespace CustomMayoMachine
                         break;// All Others
                 }
 
+                if (newHeldObject != null)
+                {
+                    machine.heldObject.Value = newHeldObject;
+                    return false;
+                }
+                return true;
             }
+
+            return true;
         }
 
             public static bool PerformRemoveAction(ref Object __instance, ref Vector2 tileLocation)

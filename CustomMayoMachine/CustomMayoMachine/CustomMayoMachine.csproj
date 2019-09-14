@@ -64,7 +64,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModEntry.cs" />
     <Compile Include="DataLoader.cs" />
     <Compile Include="CustomMayoMachineEntry.cs" />
     <Compile Include="ObjectOverrides.cs" />
