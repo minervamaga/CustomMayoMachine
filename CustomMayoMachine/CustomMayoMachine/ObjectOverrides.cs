@@ -14,6 +14,8 @@ namespace CustomMayoMachine
 
 {
     internal class ObjectOverrides
+
+
     {
 
         public virtual bool PerformObjectDropInAction(ref SObject __instance, ref Item dropInItem, ref bool probe, ref Farmer who, ref bool __result)
@@ -22,14 +24,19 @@ namespace CustomMayoMachine
             {
                     if (__instance.Name.Equals("Mayonnaise Machine"))
                     {
+
                         if (object1 == null && (object1.Category == -5))
                         {}
                         if ((__instance.heldObject.Value == null || __instance.heldObject.Value.ParentSheetIndex != object1.ParentSheetIndex)
                              && (__instance.heldObject.Value == null || __instance.MinutesUntilReady > 0))
                         {
+                        if (!probe)
+                        {
                             int minutesUntilReady = 0;
 
                             Item currentObject = __instance.heldObject.Value;
+
+                            Game1.player.removeItemFromInventory(object1.ParentSheetIndex);
 
                             if (DataLoader.MayoData.ContainsKey(object1.ParentSheetIndex))
                             {
@@ -39,6 +46,7 @@ namespace CustomMayoMachine
                             {
                                 return true;
                             }
+                        }
 
                         if (__instance.bigCraftable.Value && !probe &&
                             (object1 != null && __instance.heldObject.Value == null))
@@ -55,12 +63,58 @@ namespace CustomMayoMachine
             return true;
         }
 
-        public static bool PerformRemoveAction(ref Object __instance, ref Vector2 tileLocation)
+        public static bool Prefix(SObject __instance, Item dropInItem, bool probe, Farmer who)
+        {
+            if (!(dropInItem is SObject))
+                return false;
+            SObject inputItem = (SObject)dropInItem;
+            SObject machine = __instance;
+            Multiplayer mp = new Multiplayer();
+            //Check the machine for held items
+
+            if (machine.Name.Equals("Mayonnaise Machine"))
+            {
+                
+                switch (inputItem.Category)
+                {
+                    case 107: //Dino egg
+                        machine.heldObject.Value = new SObject(Vector2.Zero, 306, inputItem.Name + " Mayo",
+                            false, true, false, false);
+                        machine.heldObject.Value.Price = inputItem.Price * 3;
+                        return false;
+
+                    case 174: //Large egg 1
+                        machine.heldObject.Value = new SObject(Vector2.Zero, 306, "Large Mayonnaise",
+                            false, true, false, false);
+                        machine.heldObject.Value.Price = inputItem.Price * 2;
+                        return false;
+
+                    case 182: //Large egg 2
+                        machine.heldObject.Value = new SObject(Vector2.Zero, 306, "Large Mayonnaise",
+                            false, true, false, false);
+                        machine.heldObject.Value.Price = inputItem.Price * 2;
+                        return false;
+
+                    case 558: //Thunder egg
+                        machine.heldObject.Value = new SObject(Vector2.Zero, 306, "Thunder Mayo",
+                            false, true, false, false);
+                        machine.heldObject.Value.Price = inputItem.Price * 2;
+                        return false;
+
+                    default:
+                        break;// All Others
+                }
+
+            }
+        }
+
+            public static bool PerformRemoveAction(ref Object __instance, ref Vector2 tileLocation)
         {
             if (__instance.Name == "Mayonnaise Machine")
             {
                 if (__instance.heldObject.Value != null)
                 {
+
                     Game1.createItemDebris(__instance.heldObject.Value.getOne(), tileLocation * 64f, (Game1.player.FacingDirection + 2) % 4, (GameLocation)null, -1);
                 }
 
